@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width:600px;
+            border-spacing:2;
+            border:1 px polid rgb(58, 57, 57);
+
+        }
+        #tbl tr{
+            height:27px;
+        }
+        #tbl tr th , #tble tr td{
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        #tbl tr:last-child td{
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Product</h1>
+    <hr/>
+    <form name="frm">
+        <p>
+            <label>Product Name
+                <input type="text" name="pname" id="pname"/>
+            </label>
+            <label>Quantity
+                <input type="text" name="Qty" id="Qty" />
+            </label>
+        </p>
+        <p> 
+            <label>Unit Price
+                <input type="text" name="up" id="up"/>
+            </label>
+            <label>Discount
+                <input type="text" name="dc" id="dc"/>
+            </label>
+        </p>
+        <p>
+            <button type="button" onclick="sell()">Sell </button>
+            <button type="button"> Cancel</button>
+        </p>
+    </form>
+    <table id="tbl">
+        <tr >
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Discount</th>
+            <th>Subtotal</th>
+        </tr>
+    </table>
+
+    <script type="text/javascript">
+        var id=0;
+        function sell(){
+            id++;
+            var pname=frm.pname.value;
+            var Qty= frm.Qty.value;
+            var Price=frm. up.value;
+            var dc= frm.dc.value;
+            var sub=Qty*Price*(1-dc/100);
+            var row="<tr>";
+            row +="<td>"+id+"</td>";
+            row +="<td>"+pname+"</td>";
+            row +="<td>"+Qty+"</td>";
+            row +="<td>$"+Price+"</td>";
+            row +="<td>"+dc+"</td>";
+            row +="<td>"+sub   +"</td>";
+            row +="</tr>"
+            document.getElementById("tbl").innerHTML +=row;
+        }
+
+    </script>
+</body>
+</html>
